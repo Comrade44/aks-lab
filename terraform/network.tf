@@ -14,5 +14,5 @@ resource "azurerm_subnet" "core-subnet" {
   name = "snet-uks-core-01"
   virtual_network_name = azurerm_virtual_network.core-vnet.name
   resource_group_name = azurerm_resource_group.core-network-rg.name
-  address_prefixes = ["10.0.1.0/24"]
+  address_prefixes = ["10.0.1.0/16"]
 }
