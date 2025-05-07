@@ -15,6 +15,9 @@ on:
           - apply
           - destroy
         default: 'plan'
+  push:
+    paths:
+      - 'terraform/**'
 
 jobs:
 
@@ -55,7 +58,7 @@ jobs:
           -backend-config=key=aks-lab.tfstate
 
       - name: Terraform plan
-        if: ${{ inputs.terraform_action == 'plan' || inputs.terraform_action == 'apply' }}
+        if: ${{ inputs.terraform_action == 'plan' || inputs.terraform_action == 'apply' || github.event_name == 'push' }}
         run: terraform plan -out=tfplan
 
       - name: Terraform plan destroy
