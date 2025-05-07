@@ -6,6 +6,9 @@ terraform {
       version = ">= 4.27.0"
     }
   }
+  backend "azurerm" {
+    key = "aks-lab.tfstate"
+  }
 }
 
 provider "azurerm" {
