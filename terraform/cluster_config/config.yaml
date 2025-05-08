@@ -1,0 +1,5 @@
+name: "aks-lab"
+dns_prefix: "lab"
+admin_username: "demouser"
+network_plugin: "kubenet"
+load_balancer_sku: "standard"

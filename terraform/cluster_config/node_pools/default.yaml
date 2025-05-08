@@ -1,0 +1,2 @@
+node_pool_name: "default"
+node_pool_vm_size: "Standard_D2_v2"
