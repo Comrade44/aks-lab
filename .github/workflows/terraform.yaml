@@ -80,6 +80,7 @@ jobs:
         run: |
           export kube_config="$(terraform output kube_config)"
           echo "$kube_config" > kube_config
+          ls -la
 
       - name: Upload kube_config artifact
         if: ${{ inputs.terraform_action == 'apply' }}
