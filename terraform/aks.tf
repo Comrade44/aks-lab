@@ -17,6 +17,11 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     name       = local.default_node_pool_config.node_pool_name
     vm_size    = local.default_node_pool_config.node_pool_vm_size
     node_count = local.default_node_pool_config.node_count
+    upgrade_settings {
+      drain_timeout_in_minutes      = 0
+      max_surge                     = "10%"
+      node_soak_duration_in_minutes = 0
+    }
   }
   linux_profile {
     admin_username = local.cluster_config.admin_username
