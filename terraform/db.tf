@@ -7,6 +7,7 @@ resource "azurerm_public_ip" "pip-db-01" {
   name                = "pip-uks-vm-db-01"
   location            = azurerm_resource_group.db-rg.location
   resource_group_name = azurerm_resource_group.db-rg.name
+  sku                 = "Basic"
   allocation_method   = "Dynamic"
   lifecycle {
     create_before_destroy = true
