@@ -37,6 +37,7 @@ jobs:
       TF_STATE_STORAGE_ACCOUNT_NAME: ${{ secrets.TF_STATE_STORAGE_ACCOUNT_NAME }}
       TF_STATE_STORAGE_ACCOUNT_CONTAINER_NAME: ${{ secrets.TF_STATE_STORAGE_ACCOUNT_CONTAINER_NAME}}
       TF_VAR_aks_ssh_public_key: ${{ secrets.AKS_SSH_PUBLIC_KEY }}
+      ACTIONS_STEP_DEBUG: false
 
     steps:
       - uses: actions/checkout@v4
@@ -78,7 +79,7 @@ jobs:
       - name: Output kube_config
         if: ${{ inputs.terraform_action == 'apply' }}
         run: |
-          terraform output -raw kube_config > kube_config
+          terraform output -raw kube_config > kube_config 2>/dev/null
 
       - name: Upload kube_config artifact
         if: ${{ inputs.terraform_action == 'apply' }}
