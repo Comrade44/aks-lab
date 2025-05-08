@@ -20,7 +20,7 @@ resource "azurerm_network_interface" "nic-db-01" {
   resource_group_name = azurerm_resource_group.db-rg.name
   ip_configuration {
     name                          = "primary"
-    subnet_id                     = azurerm_subnet.core-subnet.id
+    subnet_id                     = azurerm_subnet.db-subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip-db-01.id
   }
