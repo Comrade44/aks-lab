@@ -16,3 +16,10 @@ resource "azurerm_subnet" "core-subnet" {
   resource_group_name  = azurerm_resource_group.core-network-rg.name
   address_prefixes     = ["10.0.1.0/24"]
 }
+
+resource "azurerm_subnet" "db-subnet" {
+  name                 = "snet-uks-db-01"
+  virtual_network_name = azurerm_virtual_network.core-vnet.name
+  resource_group_name  = azurerm_resource_group.core-network-rg.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
