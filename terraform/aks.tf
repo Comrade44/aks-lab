@@ -30,3 +30,10 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     load_balancer_sku = local.cluster_config.load_balancer_sku
   }
 }
+
+resource "azurerm_container_registry" "cr-aks-lab" {
+  name                = "cruksakslab01"
+  resource_group_name = azurerm_resource_group.aks-rg.name
+  location            = azurerm_resource_group.aks-rg.location
+  sku                 = "Basic"
+}
