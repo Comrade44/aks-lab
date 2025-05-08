@@ -87,4 +87,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kube_config
-          path: kube_config
+          path: terraform/kube_config
