@@ -79,7 +79,7 @@ jobs:
       - name: Output kube_config
         if: ${{ inputs.terraform_action == 'apply' }}
         run: |
-          terraform output -raw kube_config > kube_config 2>/dev/null
+          terraform output -json kube_config | jq -r '.' > kube_config
 
       - name: Upload kube_config artifact
         if: ${{ inputs.terraform_action == 'apply' }}
