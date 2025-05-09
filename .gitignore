@@ -38,3 +38,6 @@ terraform.rc
 
 # Kubeconfig files
 kube_config
+
+# .env files
+.env

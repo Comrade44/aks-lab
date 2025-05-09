@@ -42,3 +42,9 @@ resource "azurerm_container_registry" "cr-aks-lab" {
   location            = azurerm_resource_group.aks-rg.location
   sku                 = "Basic"
 }
+
+resource "azurerm_role_assignment" "acr_pull" {
+  scope                = azurerm_container_registry.cr-aks-lab.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_kubernetes_cluster.k8s.kubelet_identity[0].object_id
+}
