@@ -54,7 +54,7 @@ resource "azurerm_role_assignment" "acr_pull" {
 }
 
 resource "azurerm_storage_account" "aks-storage" {
-  name                     = "stgakslab${random_pet.deployment-code.id}"
+  name                     = "stgakslab${random_string.deployment-code.result}"
   location                 = azurerm_resource_group.aks-rg.location
   resource_group_name      = azurerm_resource_group.aks-rg.name
   account_tier             = "Standard"
