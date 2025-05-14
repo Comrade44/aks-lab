@@ -3,7 +3,9 @@ resource "azurerm_resource_group" "aks-rg" {
   location = "uksouth"
 }
 
-resource "random_pet" "deployment-code" {}
+resource "random_string" "deployment-code" {
+  length = 4
+}
 
 resource "azurerm_kubernetes_cluster" "k8s" {
   resource_group_name = azurerm_resource_group.aks-rg.name
