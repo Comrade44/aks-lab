@@ -43,7 +43,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 }
 
 resource "azurerm_container_registry" "cr-aks-lab" {
-  name                = "cruksakslab01"
+  name                = "crakslab${random_string.deployment-code.result}"
   resource_group_name = azurerm_resource_group.aks-rg.name
   location            = azurerm_resource_group.aks-rg.location
   sku                 = "Basic"
