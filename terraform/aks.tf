@@ -3,6 +3,8 @@ resource "azurerm_resource_group" "aks-rg" {
   location = "uksouth"
 }
 
+resource "random_pet" "deployment-code" {}
+
 resource "azurerm_kubernetes_cluster" "k8s" {
   resource_group_name = azurerm_resource_group.aks-rg.name
   location            = azurerm_resource_group.aks-rg.location
@@ -47,4 +49,12 @@ resource "azurerm_role_assignment" "acr_pull" {
   scope                = azurerm_container_registry.cr-aks-lab.id
   role_definition_name = "AcrPull"
   principal_id         = azurerm_kubernetes_cluster.k8s.kubelet_identity[0].object_id
+}
+
+resource "azurerm_storage_account" "aks-storage" {
+  name                     = "stgakslab${random_pet.deployment-code.id}"
+  location                 = azurerm_resource_group.aks-rg.location
+  resource_group_name      = azurerm_resource_group.aks-rg.name
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
