@@ -4,7 +4,8 @@ resource "azurerm_resource_group" "aks-rg" {
 }
 
 resource "random_string" "deployment-code" {
-  length = 4
+  length  = 4
+  special = false
 }
 
 resource "azurerm_kubernetes_cluster" "k8s" {
