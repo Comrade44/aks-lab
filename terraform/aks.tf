@@ -19,6 +19,13 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     type = "SystemAssigned"
   }
 
+  azure_active_directory_role_based_access_control {
+    azure_rbac_enabled = true
+  }
+
+  api_server_access_profile {
+    authorized_ip_ranges = ["188.210.212.168"]
+  }
   default_node_pool {
     name       = local.default_node_pool_config.node_pool_name
     vm_size    = local.default_node_pool_config.node_pool_vm_size
@@ -39,6 +46,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   network_profile {
     network_plugin    = local.cluster_config.network_plugin
     load_balancer_sku = local.cluster_config.load_balancer_sku
+    network_policy    = "azure"
   }
 }
 
