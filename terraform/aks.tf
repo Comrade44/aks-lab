@@ -47,7 +47,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   network_profile {
     network_plugin    = local.cluster_config.network_plugin
     load_balancer_sku = local.cluster_config.load_balancer_sku
-    network_policy    = "azure"
+    network_policy    = "kubenet"
   }
 }
 
