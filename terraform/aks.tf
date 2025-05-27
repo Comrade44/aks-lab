@@ -20,7 +20,8 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   }
 
   azure_active_directory_role_based_access_control {
-    azure_rbac_enabled = true
+    azure_rbac_enabled     = true
+    tenant_id              = data.azurerm_client_config.current.tenant_id
   }
 
   api_server_access_profile {
